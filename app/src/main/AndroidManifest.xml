@@ -17,6 +17,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SettingsActivity" android:exported="false">
+            <intent-filter>
+                <action android:name="com.j.rickroller.CONFIG" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".VideoActivity" android:exported="false">
+            <intent-filter>
+                <action android:name="com.j.rickroller.SHOWVID" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".VideoMenuActivity" android:exported="false">
+            <intent-filter>
+                <action android:name="com.j.rickroller.VIDEO" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

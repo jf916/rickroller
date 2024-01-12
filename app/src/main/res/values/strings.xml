@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Rickroller</string>
+    <string name="settings_fragment_name" translatable="false">com.j.rickroller.SettingsActivity$LauncherSettingsFragment</string>
 </resources>
