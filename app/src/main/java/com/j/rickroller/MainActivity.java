@@ -1,6 +1,7 @@
 package com.j.rickroller;
 
 import static com.j.rickroller.settings.KEY_SHOW_VID;
+import static com.j.rickroller.settings.get_Video;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,7 +14,6 @@ import android.widget.Button;
 import androidx.preference.PreferenceManager;
 
 public class MainActivity extends Activity {
-    SharedPreferences prefs;
     boolean ShowVideoMenu;
 
     public void rickroll() {
@@ -30,8 +30,7 @@ public class MainActivity extends Activity {
 
     void videoConfig() {
         Button video = findViewById(R.id.button2);
-        prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        ShowVideoMenu = prefs.getBoolean(KEY_SHOW_VID, false);
+        ShowVideoMenu = get_Video(this);
         Log.i("CONFIG", "video = " + ShowVideoMenu);
         if (ShowVideoMenu) {
             video.setVisibility(View.VISIBLE);

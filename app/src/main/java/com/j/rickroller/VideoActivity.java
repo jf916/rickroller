@@ -1,6 +1,7 @@
 package com.j.rickroller;
 
 import static com.j.rickroller.settings.KEY_ONLINE;
+import static com.j.rickroller.settings.get_Online_Mode;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -13,7 +14,6 @@ import android.widget.VideoView;
 import androidx.preference.PreferenceManager;
 
 public class VideoActivity extends Activity {
-    SharedPreferences prefs;
     boolean OnlineMode;
     VideoView video;
     int stopPosition;
@@ -23,8 +23,7 @@ public class VideoActivity extends Activity {
         setContentView(R.layout.video_activity);
 
         video = findViewById(R.id.video);
-        prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        OnlineMode = prefs.getBoolean(KEY_ONLINE, false);
+        OnlineMode = get_Online_Mode(this);
         Log.i("CONFIG", "online = " + OnlineMode);
         if (OnlineMode) {
             video.setVideoURI(Uri.parse("https://jf916.github.io/coolvideo.mp4"));
