@@ -17,12 +17,13 @@
 <androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <SwitchPreference
         android:key="pref_video"
-        android:title="enable video menu"
+        android:title="enable video playback"
         android:summary="enable playing the video in the app"
         android:defaultValue="false"
         android:persistent="true" />
 
     <SwitchPreference
+        android:dependency="pref_video"
         android:key="pref_online"
         android:title="play video from online source"
         android:summary="EXPERIMENTAL!!"

@@ -28,6 +28,6 @@
         android:layout_height="wrap_content"
         android:textSize="70sp"
         android:visibility="invisible"
-        android:text="Video Menu"
+        android:text="Play Video"
         app:layout_constraintTop_toBottomOf="@id/button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
