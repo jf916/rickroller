@@ -1,17 +1,13 @@
 package com.j.rickroller;
 
-import static com.j.rickroller.settings.KEY_SHOW_VID;
 import static com.j.rickroller.settings.get_Video;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
-import androidx.preference.PreferenceManager;
 
 public class MainActivity extends Activity {
     boolean ShowVideoMenu;
