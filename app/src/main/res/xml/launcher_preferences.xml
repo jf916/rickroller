@@ -18,14 +18,14 @@
     <SwitchPreference
         android:key="pref_video"
         android:title="enable video menu"
-        android:summary="show menu to share raw video or show the raw video"
+        android:summary="enable playing the video in the app"
         android:defaultValue="false"
         android:persistent="true" />
 
     <SwitchPreference
-        android:key="pref_video_share"
-        android:title="enable video share"
-        android:summary="enable raw video sharing"
+        android:key="pref_online"
+        android:title="play video from online source"
+        android:summary="EXPERIMENTAL!!"
         android:defaultValue="false"
         android:persistent="true" />
 

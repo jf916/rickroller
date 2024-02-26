@@ -1,13 +1,20 @@
 package com.j.rickroller;
 
+import static com.j.rickroller.settings.KEY_ONLINE;
+
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.VideoView;
 
+import androidx.preference.PreferenceManager;
+
 public class VideoActivity extends Activity {
+    SharedPreferences prefs;
+    boolean OnlineMode;
     VideoView video;
     int stopPosition;
     @Override
@@ -16,8 +23,16 @@ public class VideoActivity extends Activity {
         setContentView(R.layout.video_activity);
 
         video = findViewById(R.id.video);
-        video.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.rickroll));
-        video.start();
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        OnlineMode = prefs.getBoolean(KEY_ONLINE, false);
+        Log.i("CONFIG", "online = " + OnlineMode);
+        if (OnlineMode) {
+            video.setVideoURI(Uri.parse("https://jf916.github.io/coolvideo.mp4"));
+            video.start();
+        } else {
+            video.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.rickroll));
+            video.start();
+        }
         video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {

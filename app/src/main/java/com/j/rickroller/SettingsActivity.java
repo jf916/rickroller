@@ -1,10 +1,5 @@
 package com.j.rickroller;
 
-import static com.j.rickroller.settings.KEY_SHOW_VID;
-import static com.j.rickroller.settings.KEY_SHOW_VID_SHARE;
-
-import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,7 +7,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.core.view.WindowCompat;
@@ -24,10 +18,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceFragmentCompat.OnPreferenceStartFragmentCallback;
 import androidx.preference.PreferenceFragmentCompat.OnPreferenceStartScreenCallback;
-import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
-
-import java.util.Objects;
 
 /**
  * Settings activity for Launcher. Currently implements the following setting: Allow rotation

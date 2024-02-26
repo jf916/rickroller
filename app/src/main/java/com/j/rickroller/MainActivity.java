@@ -3,14 +3,12 @@ package com.j.rickroller;
 import static com.j.rickroller.settings.KEY_SHOW_VID;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import androidx.preference.PreferenceManager;
 
@@ -21,7 +19,7 @@ public class MainActivity extends Activity {
     public void rickroll() {
         Intent sendIntent = new Intent(Intent.ACTION_SEND);
         //set rickroll url
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "https://jf916.github.io/coolvideo.mp4");
 
 
         sendIntent.setType("text/plain");
