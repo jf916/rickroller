@@ -1,18 +1,21 @@
 package com.j.rickroller;
 
+import static com.j.rickroller.Config.actionBar;
+import static com.j.rickroller.Config.getThemejOS;
+import static com.j.rickroller.Config.relaunch;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.VisibleForTesting;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -23,7 +26,7 @@ import androidx.preference.PreferenceScreen;
 /**
  * Settings activity for Launcher. Currently implements the following setting: Allow rotation
  */
-public class SettingsActivity extends FragmentActivity
+public class SettingsActivity extends AppCompatActivity
         implements OnPreferenceStartFragmentCallback, OnPreferenceStartScreenCallback,
         SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -37,15 +40,13 @@ public class SettingsActivity extends FragmentActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(getThemejOS(this));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
 
         Intent intent = getIntent();
-        if (intent.hasExtra(EXTRA_FRAGMENT) || intent.hasExtra(EXTRA_FRAGMENT_ARGS)
-                || intent.hasExtra(EXTRA_FRAGMENT_ARG_KEY)) {
-            getActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+        actionBar(R.string.settings_name, false, this);
 
         if (savedInstanceState == null) {
             Bundle args = intent.getBundleExtra(EXTRA_FRAGMENT_ARGS);
@@ -132,6 +133,11 @@ public class SettingsActivity extends FragmentActivity
         return super.onOptionsItemSelected(item);
     }
 
+    protected void onResume() {
+        super.onResume();
+        relaunch(this);
+    }
+
     /**
      * This fragment shows the launcher preferences.
      */
@@ -152,25 +158,11 @@ public class SettingsActivity extends FragmentActivity
                 mPreferenceHighlighted = savedInstanceState.getBoolean(SAVE_HIGHLIGHTED_KEY);
             }
             setPreferencesFromResource(R.xml.launcher_preferences, rootKey);
-
-            updatePreferences();
         }
 
         @Override
         public void onDestroyView() {
             super.onDestroyView();
-        }
-
-        private void updatePreferences() {
-            PreferenceScreen screen = getPreferenceScreen();
-            for (int i = screen.getPreferenceCount() - 1; i >= 0; i--) {
-                Preference preference = screen.getPreference(i);
-                if (initPreference(preference)) {
-                    Log.i(getTag(), String.valueOf(preference));
-                } else {
-                    screen.removePreference(preference);
-                }
-            }
         }
 
 
@@ -197,18 +189,6 @@ public class SettingsActivity extends FragmentActivity
 
         protected String getParentKeyForPref(String key) {
             return null;
-        }
-
-        /**
-         * Initializes a preference. This is called for every preference. Returning false here
-         * will remove that preference from the list.
-         */
-        protected boolean initPreference(Preference preference) {
-            switch (preference.getKey()) {
-                //case KEY_SHOW_VID_SHARE:
-                    //return prefs.getBoolean(KEY_SHOW_VID, false);
-            }
-            return true;
         }
     }
 }

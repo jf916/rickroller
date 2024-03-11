@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">Rickroller</string>
     <string name="settings_fragment_name" translatable="false">com.j.rickroller.SettingsActivity$LauncherSettingsFragment</string>
+    <string-array name="themes">
+        <item>Match jOS System Theme</item>
+        <item>holo</item>
+        <item>material you (m3)</item>
+    </string-array>
+    <string-array name="themesConfig" translatable="false">
+        <item>jOS_System</item>
+        <item>Holo</item>
+        <item>M3</item>
+    </string-array>
+    <string name="settings_name">Settings</string>
 </resources>

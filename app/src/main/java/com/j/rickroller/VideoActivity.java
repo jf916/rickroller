@@ -1,6 +1,9 @@
 package com.j.rickroller;
 
-import static com.j.rickroller.settings.get_Online_Mode;
+import static com.j.rickroller.Config.getThemejOS;
+import static com.j.rickroller.Config.get_Online_Mode;
+import static com.j.rickroller.Config.get_URL;
+import static com.j.rickroller.Config.relaunch;
 
 import android.app.Activity;
 import android.media.MediaPlayer;
@@ -17,6 +20,7 @@ public class VideoActivity extends Activity {
     int stopPosition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(getThemejOS(this));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.video_activity);
 
@@ -31,7 +35,7 @@ public class VideoActivity extends Activity {
         // set the media controller for video view
         video.setMediaController(mediaControls);
         if (OnlineMode) {
-            video.setVideoURI(Uri.parse("https://jf916.github.io/coolvideo.mp4"));
+            video.setVideoURI(Uri.parse(get_URL(getApplicationContext())));
             video.start();
         } else {
             video.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.rickroll));
@@ -54,6 +58,7 @@ public class VideoActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
+        relaunch(this);
         Log.d("Video", "onResume called");
         video.seekTo(stopPosition);
         video.start(); //Or use resume() if it doesn't work. I'm not sure

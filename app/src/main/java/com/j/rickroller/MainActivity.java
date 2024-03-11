@@ -1,21 +1,29 @@
 package com.j.rickroller;
 
-import static com.j.rickroller.settings.get_Video;
+import static com.j.rickroller.Config.actionBar;
+import static com.j.rickroller.Config.getThemejOS;
+import static com.j.rickroller.Config.getThemejOSValue;
+import static com.j.rickroller.Config.get_URL;
+import static com.j.rickroller.Config.get_Video;
+import static com.j.rickroller.Config.relaunch;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Objects;
+
+public class MainActivity extends AppCompatActivity {
     boolean ShowVideoMenu;
 
     public void rickroll() {
         Intent sendIntent = new Intent(Intent.ACTION_SEND);
         //set rickroll url
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "https://jf916.github.io/coolvideo.mp4");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, get_URL(getApplicationContext()));
 
 
         sendIntent.setType("text/plain");
@@ -37,12 +45,13 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(getThemejOS(this));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+        actionBar(R.string.app_name, true, this);
 
         Button rickroll = findViewById(R.id.button);
         Button video = findViewById(R.id.button2);
-        Button Config = findViewById(R.id.floatingActionButton);
         
         videoConfig();
 
@@ -60,18 +69,10 @@ public class MainActivity extends Activity {
                 startActivity(video_menu);
             }
         });
-
-        Config.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent ConfigIntent = new Intent("com.j.rickroller.CONFIG");
-                startActivity(ConfigIntent);
-            }
-        });
     }
     protected void onResume() {
         super.onResume();
-        videoConfig();
+        relaunch(this);
     }
 
 

@@ -15,19 +15,45 @@
 -->
 
 <androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <SwitchPreference
-        android:key="pref_video"
-        android:title="enable video playback"
-        android:summary="enable playing the video in the app"
-        android:defaultValue="false"
-        android:persistent="true" />
 
-    <SwitchPreference
-        android:dependency="pref_video"
-        android:key="pref_online"
-        android:title="play video from online source"
-        android:summary="EXPERIMENTAL!!"
-        android:defaultValue="false"
-        android:persistent="true" />
+    <PreferenceCategory android:title="General">
+        <SwitchPreference
+            android:key="pref_custom_url"
+            android:title="use a custom url"
+            android:summary="for playback and sharing"
+            android:defaultValue="false"
+            android:persistent="true" />
+
+        <EditTextPreference
+            android:dependency="pref_custom_url"
+            android:key="pref_url"
+            android:title="custom url"
+            android:summary="set a custom url" />
+
+        <ListPreference
+            android:title="theme settings"
+            android:key="pref_theme"
+            android:summary="EXPERIMENTAL!!"
+            android:defaultValue="jOS_System"
+            android:entries="@array/themes"
+            android:entryValues="@array/themesConfig" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Video Playback">
+        <SwitchPreference
+            android:key="pref_video"
+            android:title="enable video playback"
+            android:summary="enable playing the video in the app"
+            android:defaultValue="false"
+            android:persistent="true" />
+
+        <SwitchPreference
+            android:dependency="pref_video"
+            android:key="pref_online"
+            android:title="play video from online source"
+            android:summary="EXPERIMENTAL!!"
+            android:defaultValue="false"
+            android:persistent="true" />
+    </PreferenceCategory>
 
 </androidx.preference.PreferenceScreen>
