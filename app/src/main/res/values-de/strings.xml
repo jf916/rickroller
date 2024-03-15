@@ -3,7 +3,8 @@
     <string-array name="themes">
         <item>Passend zum jOS-Systemthema</item>
         <item>Holo</item>
-        <item>Material du (m3)</item>
+        <item>Material du (m3) (dunkel)</item>
+        <item>Material du (m3) (Licht)</item>
     </string-array>
     <string name="settings_name">Einstellungen</string>
 </resources>

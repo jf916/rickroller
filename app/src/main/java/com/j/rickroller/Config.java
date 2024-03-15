@@ -1,6 +1,8 @@
 package com.j.rickroller;
 
 import static jOS.Core.ActionBar.actionBarConfig;
+import static jOS.Core.ThemeEngine.getSystemTheme;
+import static jOS.Core.ThemeEngine.getThemeFromDB1;
 
 import android.app.Activity;
 import android.content.Context;
@@ -78,20 +80,19 @@ public class Config {
         currentTheme = getThemejOSValue(context);
         switch (Theme) {
             case "jOS_System":
-                //Log.i("Theme Engine", SystemThemeValue);
-                //return SystemTheme;
-                // SystemTheme is not implemented yet so return jOS.Theme
-                Log.i("Theme Engine", "jOS.Core.R.style.jOS_Theme");
-                return jOS.Core.R.style.jOS_Theme;
+                Log.i("Theme Engine", getThemeFromDB1(context));
+                return getSystemTheme(context);
             case "Holo":
                 Log.i("Theme Engine", "jOS.Core.R.style.jOS_Theme");
                 return jOS.Core.R.style.jOS_Theme;
-            case "M3":
-                Log.i("Theme Engine", "com.google.android.material.R.style.Theme_Material3_DayNight_NoActionBar");
-                return com.google.android.material.R.style.Theme_Material3_DayNight_NoActionBar;
+            case "M3 Dark":
+                Log.i("Theme Engine", "com.google.android.material.R.style.Theme_Material3_Dark_NoActionBar");
+                return com.google.android.material.R.style.Theme_Material3_Dark_NoActionBar;
+            case "M3 Light":
+                Log.i("Theme Engine", "com.google.android.material.R.style.Theme_Material3_Light_NoActionBar");
+                return com.google.android.material.R.style.Theme_Material3_Light_NoActionBar;
         }
-        prefs.edit().putString(KEY_THEME, "jOS_System");
-        prefs.edit().apply();
+        prefs.edit().putString(KEY_THEME, "jOS_System").apply();
         throw new IllegalArgumentException("Unrecognised Theme");
     }
 

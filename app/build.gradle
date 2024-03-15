@@ -25,7 +25,7 @@ android {
 dependencies {
     implementation "androidx.constraintlayout:constraintlayout:2.1.4"
     implementation "androidx.preference:preference:1.2.1"
-    implementation "jOS.Core:j-SDK-core:3.0.3"
+    implementation "jOS.Core:j-SDK-core:3.0.8"
     implementation "com.google.android.material:material:1.11.0" // j-SDK dependency
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.13' // here for a joke!
 }

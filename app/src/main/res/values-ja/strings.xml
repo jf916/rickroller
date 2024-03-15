@@ -3,7 +3,8 @@
     <string-array name="themes">
         <item>jOS システムテーマと一致する</item>
         <item>ホロ</item>
-        <item>素材あなた(m3)</item>
+        <item>マテリアルユー(m3)(ダーク)</item>
+        <item>マテリアルユー(m3)(ライト)</item>
     </string-array>
     <string name="settings_name">設定</string>
 </resources>
