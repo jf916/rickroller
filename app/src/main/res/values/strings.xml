@@ -1,17 +1,17 @@
 <resources>
     <string name="app_name">Rickroller</string>
-    <string name="settings_fragment_name" translatable="false">com.j.rickroller.SettingsActivity$LauncherSettingsFragment</string>
-    <string-array name="themes">
-        <item>Match jOS System Theme</item>
-        <item>Holo</item>
-        <item>Material You (M3) (Dark)</item>
-        <item>Material You (M3) (Light)</item>
-    </string-array>
-    <string-array name="themesConfig" translatable="false">
-        <item>jOS_System</item>
-        <item>Holo</item>
-        <item>M3 Dark</item>
-        <item>M3 Light</item>
-    </string-array>
-    <string name="settings_name">Settings</string>
+    <string name="rickroller_settings_fragment_name" translatable="false">com.j.rickroller.SettingsActivity$RickrollerSettingsFragment</string>
+    <string name="use_a_custom_url">use a custom url</string>
+    <string name="for_playback_and_sharing">for playback and sharing</string>
+    <string name="custom_url">custom url</string>
+    <string name="set_a_custom_url">set a custom url</string>
+    <string name="themeengine_override">ThemeEngine Override</string>
+    <string name="general">General</string>
+    <string name="video_playback">Video Playback</string>
+    <string name="enable_video_playback">enable video playback</string>
+    <string name="enable_playing_the_video_in_the_app">enable playing the video in the app</string>
+    <string name="play_video_from_online_source">play video from online source</string>
+    <string name="requires_an_internet_connection">Requires an internet connection</string>
+    <string name="play_video">Play Video</string>
+    <string name="rickroll">RICKROLL</string>
 </resources>

@@ -1,17 +1,18 @@
 plugins {
     id 'com.android.application'
+    id 'com.mikepenz.aboutlibraries.plugin'
 }
 
 android {
     namespace 'com.j.rickroller'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.j.rickroller"
-        minSdk 33
-        targetSdk 34
-        versionCode 4
-        versionName "2.0"
+        minSdk 21
+        targetSdk 35
+        versionCode 5
+        versionName "2.1"
     }
 
     buildTypes {
@@ -23,9 +24,5 @@ android {
 }
 
 dependencies {
-    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
-    implementation "androidx.preference:preference:1.2.1"
-    implementation "jOS.Core:j-SDK-core:3.0.8"
-    implementation "com.google.android.material:material:1.11.0" // j-SDK dependency
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.13' // here for a joke!
+    implementation "io.github.dot166:j-Lib:3.2.14"
 }

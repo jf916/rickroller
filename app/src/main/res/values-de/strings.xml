@@ -1,10 +1,16 @@
 <resources>
     <string name="app_name">Rickroller</string>
-    <string-array name="themes">
-        <item>Passend zum jOS-Systemthema</item>
-        <item>Holo</item>
-        <item>Material du (m3) (dunkel)</item>
-        <item>Material du (m3) (Licht)</item>
-    </string-array>
-    <string name="settings_name">Einstellungen</string>
+    <string name="use_a_custom_url">Verwenden Sie eine benutzerdefinierte URL</string>
+    <string name="for_playback_and_sharing">zum Abspielen und Teilen</string>
+    <string name="custom_url">eigene URL</string>
+    <string name="set_a_custom_url">Legen Sie eine benutzerdefinierte URL fest</string>
+    <string name="themeengine_override">ThemeEngine-Überschreibung</string>
+    <string name="general">Allgemein</string>
+    <string name="video_playback">Video-Wiedergabe</string>
+    <string name="enable_video_playback">Aktivieren Sie die Videowiedergabe</string>
+    <string name="enable_playing_the_video_in_the_app">Aktivieren Sie die Wiedergabe des Videos in der App</string>
+    <string name="play_video_from_online_source">Spielen Sie Videos von einer Online-Quelle ab</string>
+    <string name="requires_an_internet_connection">Erfordert eine Internetverbindung</string>
+    <string name="play_video">Video abspielen</string>
+    <string name="rickroll">RICKROLL</string>
 </resources>

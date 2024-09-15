@@ -1,6 +1,5 @@
 package com.j.rickroller;
 
-import static jOS.Core.ActionBar.actionBarConfig;
 import static jOS.Core.ThemeEngine.getSystemTheme;
 import static jOS.Core.ThemeEngine.getThemeFromDB1;
 
@@ -10,7 +9,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
 import java.util.Objects;
@@ -20,9 +18,7 @@ public class Config {
     public static final String KEY_ONLINE = "pref_online";
     public static final String KEY_CUSTOM_URL_PREF = "pref_custom_url";
     public static final String KEY_CUSTOM_URL = "pref_url";
-    public static final String KEY_THEME = "pref_theme";
     public static final String DEFAULT_URL = "https://dot166.github.io/coolvideo.mp4";
-    static String currentTheme;
 
     public static boolean get_Online_Mode(Context context) {
         SharedPreferences prefs;
@@ -68,47 +64,4 @@ public class Config {
         }
     }
 
-    public static void actionBar(int name, boolean home, AppCompatActivity context){
-        actionBarConfig(name, R.mipmap.ic_launcher, home, context, "com.j.rickroller.CONFIG");
-    }
-
-    public static int getThemejOS(Context context){
-        SharedPreferences prefs;
-        String Theme;
-        prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        Theme = prefs.getString(KEY_THEME, "jOS_System");
-        currentTheme = getThemejOSValue(context);
-        switch (Theme) {
-            case "jOS_System":
-                Log.i("Theme Engine", getThemeFromDB1(context));
-                return getSystemTheme(context);
-            case "Holo":
-                Log.i("Theme Engine", "jOS.Core.R.style.jOS_Theme");
-                return jOS.Core.R.style.jOS_Theme;
-            case "M3 Dark":
-                Log.i("Theme Engine", "com.google.android.material.R.style.Theme_Material3_Dark_NoActionBar");
-                return com.google.android.material.R.style.Theme_Material3_Dark_NoActionBar;
-            case "M3 Light":
-                Log.i("Theme Engine", "com.google.android.material.R.style.Theme_Material3_Light_NoActionBar");
-                return com.google.android.material.R.style.Theme_Material3_Light_NoActionBar;
-        }
-        prefs.edit().putString(KEY_THEME, "jOS_System").apply();
-        throw new IllegalArgumentException("Unrecognised Theme");
-    }
-
-    public static String getThemejOSValue(Context context){
-        SharedPreferences prefs;
-        String Theme;
-        prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        Theme = prefs.getString(KEY_THEME, "jOS_System");
-        return Theme;
-    }
-
-    public static void relaunch(Activity context) {
-        if (!Objects.equals(currentTheme, getThemejOSValue(context))) {
-            Intent intent = context.getIntent();
-            context.finish();
-            context.startActivity(intent);
-        }
-    }
 }

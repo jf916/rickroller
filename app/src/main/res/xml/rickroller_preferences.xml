@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/general" android:key="General_prefs">
+        <SwitchPreference
+            android:key="pref_custom_url"
+            android:title="@string/use_a_custom_url"
+            android:summary="@string/for_playback_and_sharing"
+            android:defaultValue="false"
+            android:persistent="true" />
+
+        <EditTextPreference
+            android:dependency="pref_custom_url"
+            android:key="pref_url"
+            android:title="@string/custom_url"
+            android:summary="@string/set_a_custom_url" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/video_playback" android:key="videoprefs">
+        <SwitchPreference
+            android:key="pref_video"
+            android:title="@string/enable_video_playback"
+            android:summary="@string/enable_playing_the_video_in_the_app"
+            android:defaultValue="false"
+            android:persistent="true" />
+
+        <SwitchPreference
+            android:dependency="pref_video"
+            android:key="pref_online"
+            android:title="@string/play_video_from_online_source"
+            android:summary="@string/requires_an_internet_connection"
+            android:defaultValue="false"
+            android:persistent="true" />
+    </PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>

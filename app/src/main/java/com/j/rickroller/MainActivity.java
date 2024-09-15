@@ -1,23 +1,20 @@
 package com.j.rickroller;
 
-import static com.j.rickroller.Config.actionBar;
-import static com.j.rickroller.Config.getThemejOS;
-import static com.j.rickroller.Config.getThemejOSValue;
 import static com.j.rickroller.Config.get_URL;
 import static com.j.rickroller.Config.get_Video;
-import static com.j.rickroller.Config.relaunch;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
+import jOS.Core.jActivity;
 
-import java.util.Objects;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends jActivity {
     boolean ShowVideoMenu;
 
     public void rickroll() {
@@ -45,13 +42,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(getThemejOS(this));
+        configure(R.layout.main_activity, true);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
-        actionBar(R.string.app_name, true, this);
 
         Button rickroll = findViewById(R.id.button);
         Button video = findViewById(R.id.button2);
+        Button about = findViewById(R.id.button3);
         
         videoConfig();
 
@@ -69,10 +65,42 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(video_menu);
             }
         });
+
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent about_menu = new Intent(v.getContext(), About.class);
+                startActivity(about_menu);
+            }
+        });
     }
-    protected void onResume() {
-        super.onResume();
-        relaunch(this);
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.options, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.options:
+                // User chooses the "Settings" item. Show the app settings UI.
+                startActivity(new Intent("com.j.rickroller.CONFIG"));
+                return true;
+
+            //case R.id.action_favorite:
+            //// User chooses the "Favorite" action. Mark the current item as a
+            //// favorite.
+            //return true;
+
+            default:
+                // The user's action isn't recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
 
