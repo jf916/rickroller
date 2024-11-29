@@ -1,13 +1,7 @@
 package com.j.rickroller;
 
-import static jOS.Core.ThemeEngine.getSystemTheme;
-import static jOS.Core.ThemeEngine.getThemeFromDB1;
-
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 

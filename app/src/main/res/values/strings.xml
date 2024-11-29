@@ -1,11 +1,9 @@
 <resources>
     <string name="app_name">Rickroller</string>
-    <string name="rickroller_settings_fragment_name" translatable="false">com.j.rickroller.SettingsActivity$RickrollerSettingsFragment</string>
     <string name="use_a_custom_url">use a custom url</string>
     <string name="for_playback_and_sharing">for playback and sharing</string>
     <string name="custom_url">custom url</string>
     <string name="set_a_custom_url">set a custom url</string>
-    <string name="themeengine_override">ThemeEngine Override</string>
     <string name="general">General</string>
     <string name="video_playback">Video Playback</string>
     <string name="enable_video_playback">enable video playback</string>
@@ -14,4 +12,6 @@
     <string name="requires_an_internet_connection">Requires an internet connection</string>
     <string name="play_video">Play Video</string>
     <string name="rickroll">RICKROLL</string>
+    <string name="send_url">Send URL</string>
+    <string name="send_video">Send Video</string>
 </resources>

@@ -8,31 +8,27 @@
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationContentDescription="@string/back_button"
+        app:navigationContentDescription="@string/abc_action_bar_up_description"
         android:id="@+id/actionbar"/>
 
     <Button
         android:id="@+id/button"
-        android:layout_width="match_parent"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:textSize="70sp"
+        android:textSize="40sp"
         android:text="@string/rickroll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/actionbar"/>
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="match_parent"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:textSize="70sp"
+        android:textSize="40sp"
         android:visibility="invisible"
         android:text="@string/play_video"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="70sp"
-        android:text="@string/about"
-        app:layout_constraintTop_toBottomOf="@id/button2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

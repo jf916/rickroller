@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <jOS.Core.MenuButton
+        android:id="@+id/button1"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:text="@string/send_url"
+        android:icon="@drawable/outline_add_link_24"
+        android:contentDescription="@string/send_url"
+        android:layout_height="?minTouchTargetSize"/>
+
+    <jOS.Core.MenuButton
+        android:id="@+id/button2"
+        android:layout_below="@id/button1"
+        android:layout_width="match_parent"
+        android:text="@string/send_video"
+        android:icon="@drawable/outline_featured_video_24"
+        android:contentDescription="@string/send_video"
+        android:layout_height="?minTouchTargetSize"/>
+</RelativeLayout>

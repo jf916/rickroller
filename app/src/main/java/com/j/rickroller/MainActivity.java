@@ -1,6 +1,5 @@
 package com.j.rickroller;
 
-import static com.j.rickroller.Config.get_URL;
 import static com.j.rickroller.Config.get_Video;
 
 import android.content.Intent;
@@ -16,18 +15,6 @@ import jOS.Core.jActivity;
 
 public class MainActivity extends jActivity {
     boolean ShowVideoMenu;
-
-    public void rickroll() {
-        Intent sendIntent = new Intent(Intent.ACTION_SEND);
-        //set rickroll url
-        sendIntent.putExtra(Intent.EXTRA_TEXT, get_URL(getApplicationContext()));
-
-
-        sendIntent.setType("text/plain");
-
-        // Show the Sharesheet
-        startActivity(Intent.createChooser(sendIntent, null));
-    }
 
     void videoConfig() {
         Button video = findViewById(R.id.button2);
@@ -47,30 +34,20 @@ public class MainActivity extends jActivity {
 
         Button rickroll = findViewById(R.id.button);
         Button video = findViewById(R.id.button2);
-        Button about = findViewById(R.id.button3);
         
         videoConfig();
 
         rickroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rickroll();
+                new BottomSheet().show(getSupportFragmentManager(), BottomSheet.TAG);
             }
         });
 
         video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent video_menu = new Intent("com.j.rickroller.VIDEO");
-                startActivity(video_menu);
-            }
-        });
-
-        about.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent about_menu = new Intent(v.getContext(), About.class);
-                startActivity(about_menu);
+                startActivity(new Intent(v.getContext(), VideoActivity.class));
             }
         });
     }
@@ -87,7 +64,7 @@ public class MainActivity extends jActivity {
         switch (item.getItemId()) {
             case R.id.options:
                 // User chooses the "Settings" item. Show the app settings UI.
-                startActivity(new Intent("com.j.rickroller.CONFIG"));
+                startActivity(new Intent(this, SettingsActivity.class));
                 return true;
 
             //case R.id.action_favorite:
