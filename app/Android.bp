@@ -1,7 +1,7 @@
 android_app {
     name: "RickRoller",
-    certificate: "platform",
-    system_ext_specific: true,
+    sdk_version: "current",
+    product_specific: true,
 
     resource_dirs: ["src/main/res"],
 
