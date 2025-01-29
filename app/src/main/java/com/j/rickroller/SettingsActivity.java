@@ -5,7 +5,7 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.preference.Preference;
 
-import jOS.Core.jConfigActivity;
+import io.github.dot166.jLib.app.jConfigActivity;
 
 /**
  * Settings activity for Launcher. Currently implements the following setting: Allow rotation

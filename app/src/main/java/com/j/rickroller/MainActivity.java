@@ -1,8 +1,11 @@
 package com.j.rickroller;
 
-import static com.j.rickroller.Config.get_Video;
+import static com.j.rickroller.Config.get_Online_Mode;
+import static com.j.rickroller.Config.get_URL;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -10,46 +13,61 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
-import jOS.Core.jActivity;
+import io.github.dot166.jLib.app.jActivity;
+import io.github.dot166.jLib.utils.NetUtils;
 
 public class MainActivity extends jActivity {
-    boolean ShowVideoMenu;
-
-    void videoConfig() {
-        Button video = findViewById(R.id.button2);
-        ShowVideoMenu = get_Video(this);
-        Log.i("CONFIG", "video = " + ShowVideoMenu);
-        if (ShowVideoMenu) {
-            video.setVisibility(View.VISIBLE);
-        } else {
-            video.setVisibility(View.INVISIBLE);
-        }
-    }
+    boolean OnlineMode;
+    VideoView video;
+    MediaController mediaControls;
+    int stopPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        configure(R.layout.main_activity, true);
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.main_activity);
+        setSupportActionBar(findViewById(R.id.actionbar));
 
-        Button rickroll = findViewById(R.id.button);
-        Button video = findViewById(R.id.button2);
-        
-        videoConfig();
-
-        rickroll.setOnClickListener(new View.OnClickListener() {
+        video = findViewById(R.id.video);
+        OnlineMode = get_Online_Mode(this);
+        Log.i("CONFIG", "online = " + OnlineMode);
+        if (mediaControls == null) {
+            // create an object of media controller class
+            mediaControls = new MediaController(this);
+            mediaControls.setAnchorView(video);
+        }
+        // set the media controller for video view
+        video.setMediaController(mediaControls);
+        if (OnlineMode && NetUtils.isNetworkAvailable(this)) {
+            video.setVideoURI(Uri.parse(get_URL(getApplicationContext())));
+            video.start();
+        } else {
+            video.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.rickroll));
+            video.start();
+        }
+        video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
-            public void onClick(View v) {
-                new BottomSheet().show(getSupportFragmentManager(), BottomSheet.TAG);
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
             }
         });
-
-        video.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), VideoActivity.class));
-            }
-        });
+    }
+    @Override
+    public void onPause() {
+        Log.d("Video", "onPause called");
+        super.onPause();
+        stopPosition = video.getCurrentPosition(); //stopPosition is an int
+        video.pause();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("Video", "onResume called");
+        video.seekTo(stopPosition);
+        video.start(); //Or use resume() if it doesn't work. I'm not sure
     }
 
     @Override
@@ -67,10 +85,18 @@ public class MainActivity extends jActivity {
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
 
-            //case R.id.action_favorite:
-            //// User chooses the "Favorite" action. Mark the current item as a
-            //// favorite.
-            //return true;
+            case R.id.share:
+            // User chooses the "Share" action. Share the video
+
+                Intent sendIntent = new Intent(Intent.ACTION_SEND);
+                //set rickroll url
+                sendIntent.putExtra(Intent.EXTRA_TEXT, get_URL(this));
+
+                sendIntent.setType("text/plain");
+
+                // Show the Sharesheet
+                startActivity(Intent.createChooser(sendIntent, null));
+            return true;
 
             default:
                 // The user's action isn't recognized.

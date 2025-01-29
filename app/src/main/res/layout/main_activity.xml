@@ -4,31 +4,17 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <jOS.Core.ActionBar2
+    <io.github.dot166.jLib.widget.ActionBar2
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationContentDescription="@string/abc_action_bar_up_description"
         android:id="@+id/actionbar"/>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="320dp"
+    <VideoView
+        android:id="@+id/video"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:text="@string/rickroll"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/actionbar"/>
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:visibility="invisible"
-        android:text="@string/play_video"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button" />
+        app:layout_constraintTop_toBottomOf="@id/actionbar"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

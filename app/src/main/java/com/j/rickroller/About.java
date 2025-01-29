@@ -8,8 +8,8 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import jOS.Core.LIBTestActivity;
-import jOS.Core.jAboutActivity;
+import io.github.dot166.jLib.LIBTestActivity;
+import io.github.dot166.jLib.app.jAboutActivity;
 
 public class About extends jAboutActivity {
 
@@ -24,8 +24,8 @@ public class About extends jAboutActivity {
     public List<Link> links() {
         return new ArrayList<>(List.of(
                 new Link(
-                        jOS.Core.R.drawable.ic_github,
-                        jOS.Core.R.string.github,
+                        io.github.dot166.jLib.R.drawable.ic_github,
+                        io.github.dot166.jLib.R.string.github,
                         "https://github.com/dot166/rickroller"
                 )));
     }
@@ -39,7 +39,7 @@ public class About extends jAboutActivity {
     }
 
     public enum Role implements Roles {
-        LeadDev(jOS.Core.R.string.leaddev);
+        LeadDev(io.github.dot166.jLib.R.string.leaddev);
 
         private final int descriptionResId;
 

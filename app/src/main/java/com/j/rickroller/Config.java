@@ -8,7 +8,6 @@ import androidx.preference.PreferenceManager;
 import java.util.Objects;
 
 public class Config {
-    public static final String KEY_SHOW_VID = "pref_video";
     public static final String KEY_ONLINE = "pref_online";
     public static final String KEY_CUSTOM_URL_PREF = "pref_custom_url";
     public static final String KEY_CUSTOM_URL = "pref_url";
@@ -20,14 +19,6 @@ public class Config {
         prefs = PreferenceManager.getDefaultSharedPreferences(context);
         OnlineMode = prefs.getBoolean(KEY_ONLINE, false);
         return OnlineMode;
-    }
-
-    public static boolean get_Video(Context context) {
-        SharedPreferences prefs;
-        boolean Video;
-        prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        Video = prefs.getBoolean(KEY_SHOW_VID, false);
-        return Video;
     }
 
     private static boolean get_custom_url_pref(Context context) {

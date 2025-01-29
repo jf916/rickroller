@@ -9,4 +9,6 @@
         android:title="@string/settings_name"
         app:showAsAction="ifRoom"/>
 
+    <item android:id="@+id/share" android:icon="?actionModeShareDrawable" android:title="@string/share_rickroll" app:showAsAction="ifRoom"/>
+
 </menu>

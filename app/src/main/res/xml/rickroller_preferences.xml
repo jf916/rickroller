@@ -19,14 +19,6 @@
 
     <PreferenceCategory android:title="@string/video_playback" android:key="videoprefs">
         <SwitchPreference
-            android:key="pref_video"
-            android:title="@string/enable_video_playback"
-            android:summary="@string/enable_playing_the_video_in_the_app"
-            android:defaultValue="false"
-            android:persistent="true" />
-
-        <SwitchPreference
-            android:dependency="pref_video"
             android:key="pref_online"
             android:title="@string/play_video_from_online_source"
             android:summary="@string/requires_an_internet_connection"
